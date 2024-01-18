@@ -1,6 +1,7 @@
+import { AdvertsList } from 'components/AdvertsList/AdvertsList';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchAdverts } from 'redux/advertsSlice/advertsOperations';
+import { fetchAdverts } from '../redux/advertsSlice/advertsOperations';
 
 export const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -9,5 +10,5 @@ export const CatalogPage = () => {
     dispatch(fetchAdverts());
   }, [dispatch]);
 
-  return <div></div>;
+  return <AdvertsList />;
 };
