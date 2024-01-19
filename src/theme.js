@@ -1,9 +1,11 @@
 export const theme = {
   colors: {
-    primaryBlue: '#3470FF',
-    primaryBlack: '#121417',
-    primaryGrey: '#F7F7FB',
-    primaryWhite: '#FFFFFF',
+    blue: '#3470FF',
+    activeBlue: '#0B44CD',
+    black: '#121417',
+    secondaryBlack: 'rgba(18, 20, 23, 0.5)',
+    grey: '#F7F7FB',
+    white: '#FFFFFF',
   },
   fonts: {
     body: 'Manrope, sans-serif',
