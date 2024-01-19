@@ -1,4 +1,16 @@
-import { Img } from './AdvertInfoDetails.styled';
+import {
+  BlockTitle,
+  Button,
+  ContainerBlock,
+  ContainerConditions,
+  Img,
+  Model,
+  TextConditions,
+  TextDescription,
+  TextInfo,
+  TextSpan,
+  Title,
+} from './AdvertInfoDetails.styled';
 
 export const AdvertInfoDetails = ({ selectedAdvert }) => {
   console.log(selectedAdvert);
@@ -22,46 +34,45 @@ export const AdvertInfoDetails = ({ selectedAdvert }) => {
 
   const rentalConditionsArray = rentalConditions.split('\n');
   return (
-    <div>
+    <>
       <Img src={img} alt={make} />
-      <div>
-        <h3>
+      <ContainerBlock>
+        <Title>
           {make}
-          <span>{model}</span>,{year}
-        </h3>
-        <div>
-          <p>{address.split(', ').slice(1).join(' | ')}</p>
-          <p>| id:{id}</p>
-          <p>| year:{year}</p>
-          <p>| type: {type}</p>
-          <p>
-            FuelConsumption:{fuelConsumption} | EngineSize:{engineSize}
-          </p>
-        </div>
-        <p>{description}</p>
-        <div>
-          <h4>Accessories and functionalities:</h4>
-          <p>{accessories.join(' | ')}</p>
-          <p>{functionalities.join(' | ')}</p>
-        </div>
-        <div>
-          <h4>Rental conditions:</h4>
-          <div>
-            <p>{rentalConditionsArray[0]}</p>
-            <p>{rentalConditionsArray[1]}</p>
-          </div>
-          <div>
-            <p>{rentalConditionsArray[2]}</p>
-            <p>
-              Mileage:<span>{mileage.toLocaleString()}</span>
-            </p>
-            <p>
-              Price: <span>{rentalPrice}</span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <button>Rental car</button>
-    </div>
+          <Model>{model}</Model>, {year}
+        </Title>
+        <TextInfo>
+          {address.split(', ').slice(1).join(' | ')} | id:{id} | year:{year} |
+          type: {type}
+        </TextInfo>
+        <TextInfo>
+          FuelConsumption:{fuelConsumption} | EngineSize:{engineSize}
+        </TextInfo>
+      </ContainerBlock>
+      <TextDescription>{description}</TextDescription>
+      <ContainerBlock>
+        <BlockTitle>Accessories and functionalities:</BlockTitle>
+        <TextInfo>{accessories.join(' | ')}</TextInfo>
+        <TextInfo>{functionalities.join(' | ')}</TextInfo>
+      </ContainerBlock>
+      <ContainerBlock>
+        <BlockTitle>Rental conditions:</BlockTitle>
+        <ContainerConditions>
+          <TextConditions>{rentalConditionsArray[0]}</TextConditions>
+          <TextConditions>{rentalConditionsArray[1]}</TextConditions>
+        </ContainerConditions>
+        <ContainerConditions>
+          <TextConditions>{rentalConditionsArray[2]}</TextConditions>
+          <TextConditions>
+            Mileage:<TextSpan>{mileage.toLocaleString()}</TextSpan>
+          </TextConditions>
+          <TextConditions>
+            Price: <TextSpan>{rentalPrice}</TextSpan>
+          </TextConditions>
+        </ContainerConditions>
+      </ContainerBlock>
+
+      <Button>Rental car</Button>
+    </>
   );
 };

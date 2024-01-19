@@ -17,6 +17,12 @@ export const Modal = ({ isClose, children, isOpen }) => {
     };
   }, [isClose]);
 
+  const handleBackdropClick = evt => {
+    if (evt.target === evt.currentTarget) {
+      isClose();
+    }
+  };
+
   return isOpen && modalRoot
     ? createPortal(
         <div
@@ -26,18 +32,20 @@ export const Modal = ({ isClose, children, isOpen }) => {
             left: 0,
             width: '100%',
             height: '100%',
-            background: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+            background: 'rgba(0, 0, 0, 0.5)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}
-          onClick={isClose} // Close modal when clicking outside
+          onClick={handleBackdropClick}
         >
           <div
             style={{
-              background: '#fff', // White background for the modal content
+              background: '#F9F9F9',
               padding: '40px',
               borderRadius: '24px',
+              width: '541px',
+              height: '752px',
             }}
           >
             {children}

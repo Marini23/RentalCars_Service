@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom';
+import { Header, Text } from './Navigation.styled';
 
 export const Navigation = () => {
   return (
-    <nav>
+    <Header>
       <Link to="/">
-        <div>Home</div>
+        <Text>Home</Text>
       </Link>
       <Link to="/catalog">
-        <div>Catalog</div>
+        <Text>Catalog</Text>
       </Link>
       <Link to="/favorites">
-        <div>Favoretes</div>
+        <Text>Favoretes</Text>
       </Link>
-    </nav>
+    </Header>
   );
 };
