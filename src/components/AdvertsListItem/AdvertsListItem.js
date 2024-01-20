@@ -1,6 +1,6 @@
 // import { useDispatch } from 'react-redux';
 
-import { FaRegHeart } from 'react-icons/fa6';
+import { FaHeart } from 'react-icons/fa6';
 
 import {
   AdvertCard,
@@ -52,7 +52,7 @@ export const AdvertsListItem = ({ advert }) => {
     <>
       <AdvertCard>
         <Img src={img} alt={make} />
-        <FaRegHeart
+        <FaHeart
           style={{
             position: 'absolute',
             top: '14px',

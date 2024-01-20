@@ -9,7 +9,26 @@ export const fetchAdverts = createAsyncThunk(
 
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/catalog');
+      const url = new URL('/catalog', axios.defaults.baseURL);
+      url.searchParams.append('page', 1);
+      url.searchParams.append('limit', 12);
+      const response = await axios.get(url);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const loadMoreAdverts = createAsyncThunk(
+  'adverts/loadMore',
+
+  async (page, thunkAPI) => {
+    try {
+      const url = new URL('/catalog', axios.defaults.baseURL);
+      url.searchParams.append('page', page);
+      url.searchParams.append('limit', 12);
+      const response = await axios.get(url);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
