@@ -4,6 +4,7 @@ import {
   ContainerBlock,
   ContainerConditions,
   Img,
+  Link,
   Model,
   TextConditions,
   TextDescription,
@@ -12,7 +13,9 @@ import {
   Title,
 } from './AdvertInfoDetails.styled';
 
-export const AdvertInfoDetails = ({ selectedAdvert }) => {
+import { IoCloseOutline } from 'react-icons/io5';
+
+export const AdvertInfoDetails = ({ selectedAdvert, isClose }) => {
   console.log(selectedAdvert);
   const {
     year,
@@ -33,8 +36,22 @@ export const AdvertInfoDetails = ({ selectedAdvert }) => {
   } = selectedAdvert;
 
   const rentalConditionsArray = rentalConditions.split('\n');
+
+  const handleClick = () => {
+    isClose();
+  };
   return (
     <>
+      <IoCloseOutline
+        style={{
+          position: 'absolute',
+          top: '16px',
+          left: '501px',
+        }}
+        size="24px"
+        color="black"
+        onClick={handleClick}
+      />
       <Img src={img} alt={make} />
       <ContainerBlock>
         <Title>
@@ -71,8 +88,9 @@ export const AdvertInfoDetails = ({ selectedAdvert }) => {
           </TextConditions>
         </ContainerConditions>
       </ContainerBlock>
-
-      <Button>Rental car</Button>
+      <Button>
+        <Link href={`tel:+380730000000`}>Rental car</Link>
+      </Button>
     </>
   );
 };

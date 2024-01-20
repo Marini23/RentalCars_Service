@@ -78,7 +78,7 @@ export const TextSpan = styled.span`
   color: ${props => `${props.theme.colors.blue}`};
 `;
 
-export const Button = styled.button`
+export const Button = styled.div`
   width: 168px;
   height: 44px;
   cursor: pointer;
@@ -86,15 +86,27 @@ export const Button = styled.button`
   border: none;
   align-items: center;
   justify-content: center;
-  background-color: ${props => `${props.theme.colors.blue}`};
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
   color: ${props => `${props.theme.colors.white}`};
+  background-color: ${props => `${props.theme.colors.blue}`};
   &:hover {
     background-color: ${props => `${props.theme.colors.activeBlue}`};
   }
   &:focus {
     background-color: ${props => `${props.theme.colors.activeBlue}`};
   }
+`;
+
+export const Link = styled.a`
+  cursor: pointer;
+  display: flex;
+  padding: 12px 50px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+  color: ${props => `${props.theme.colors.white}`};
+  text-decoration: none;
 `;

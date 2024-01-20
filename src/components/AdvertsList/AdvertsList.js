@@ -1,15 +1,19 @@
 import { AdvertsListItem } from 'components/AdvertsListItem/AdvertsListItem';
 import { useSelector } from 'react-redux';
-import { selectAdverts } from '../../redux/selectors';
+import { selectVisibleAdverts } from '../../redux/selectors';
 import { CarsList } from './AdvertsList.styled';
+import { FilterCarBrand } from 'components/Filters/FilterCarBrand';
 
 export const AdvertsList = () => {
-  const adverts = useSelector(selectAdverts);
+  const adverts = useSelector(selectVisibleAdverts);
   return (
-    <CarsList>
-      {adverts.map(advert => (
-        <AdvertsListItem advert={advert} key={advert.id} />
-      ))}
-    </CarsList>
+    <div>
+      <FilterCarBrand />
+      <CarsList>
+        {adverts.map(advert => (
+          <AdvertsListItem advert={advert} key={advert.id} />
+        ))}
+      </CarsList>
+    </div>
   );
 };

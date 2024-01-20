@@ -40,7 +40,6 @@ export const AdvertsListItem = ({ advert }) => {
   const [selectedAdvert, setSelectedAdvert] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => {
-    console.log('modal');
     setIsModalOpen(state => !state);
     if (!isModalOpen) {
       const selectCar = adverts.find(car => car.id === id);

@@ -10,6 +10,8 @@ export const theme = {
     backgroundModal: '#F9F9F9',
     backgroundHeder: '#a2a8d3',
     textHeder: '#233142',
+    textLabel: '#8A8A89',
+    textDropDown: 'rgba(18, 20, 23, 0.2)',
   },
   fonts: {
     body: 'Manrope, sans-serif',

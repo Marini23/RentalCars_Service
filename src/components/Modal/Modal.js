@@ -41,6 +41,7 @@ export const Modal = ({ isClose, children, isOpen }) => {
         >
           <div
             style={{
+              position: 'relative',
               background: '#F9F9F9',
               padding: '40px',
               borderRadius: '24px',
