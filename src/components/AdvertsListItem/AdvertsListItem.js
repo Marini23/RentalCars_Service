@@ -1,5 +1,3 @@
-// import { useDispatch } from 'react-redux';
-
 import { FaRegHeart } from 'react-icons/fa6';
 import { FaHeart } from 'react-icons/fa6';
 
@@ -26,7 +24,6 @@ import { addFavorites, deleteFavorites } from '../../redux/favoritesSlice';
 export const AdvertsListItem = ({ advert }) => {
   const dispatch = useDispatch();
   const adverts = useSelector(selectAdverts);
-  const favoritesAdverts = useSelector(selectFavorites);
   const {
     year,
     make,
@@ -42,7 +39,7 @@ export const AdvertsListItem = ({ advert }) => {
 
   const [selectedAdvert, setSelectedAdvert] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+
   const toggleModal = () => {
     setIsModalOpen(state => !state);
     if (!isModalOpen) {
@@ -53,19 +50,17 @@ export const AdvertsListItem = ({ advert }) => {
     }
   };
 
+  // const isFavorite = favorites.some(favorite => favorite.id === id);
+
+  const isFavorite = useSelector(state =>
+    state.favorites.favoritesItems.some(favorite => favorite.id === id)
+  );
+
   const toggleFavorite = () => {
-    setIsFavorite(state => !state);
-    const selectCar = adverts.find(car => car.id === id);
-    if (!isFavorite) {
-      const isExist = favoritesAdverts.find(
-        favorite => favorite.id === selectCar.id
-      );
-      if (isExist) {
-        return;
-      }
-      dispatch(addFavorites(selectCar));
+    if (isFavorite) {
+      dispatch(deleteFavorites(adverts));
     } else {
-      dispatch(deleteFavorites(selectCar));
+      dispatch(addFavorites(advert));
     }
   };
 
