@@ -86,10 +86,6 @@ export const Button = styled.div`
   border: none;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  color: ${props => `${props.theme.colors.white}`};
   background-color: ${props => `${props.theme.colors.blue}`};
   &:hover {
     background-color: ${props => `${props.theme.colors.activeBlue}`};
@@ -103,10 +99,12 @@ export const Link = styled.a`
   cursor: pointer;
   display: flex;
   padding: 12px 50px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 20px;
   text-align: center;
+  justify-content: center;
+  align-items: center;
   color: ${props => `${props.theme.colors.white}`};
   text-decoration: none;
 `;

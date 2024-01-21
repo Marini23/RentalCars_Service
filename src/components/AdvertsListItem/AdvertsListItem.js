@@ -58,7 +58,8 @@ export const AdvertsListItem = ({ advert }) => {
 
   const toggleFavorite = () => {
     if (isFavorite) {
-      dispatch(deleteFavorites(adverts));
+      console.log(advert);
+      dispatch(deleteFavorites(advert));
     } else {
       dispatch(addFavorites(advert));
     }

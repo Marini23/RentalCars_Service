@@ -17,8 +17,6 @@ export const Button = styled.button`
   color: ${props => `${props.theme.colors.blue}`};
   &:hover {
     border-bottom: 1px solid ${props => `${props.theme.colors.activeBlue}`};
-  }
-  &:focus {
-    border-bottom: 1px solid ${props => `${props.theme.colors.activeBlue}`};
+    color: ${props => `${props.theme.colors.activeBlue}`};
   }
 `;

@@ -5,6 +5,7 @@ import 'modern-normalize';
 import ManropeRegular from './fonts/Manrope-Regular.ttf';
 import ManropeMedium from './fonts/Manrope-Medium.ttf';
 import ManropeBold from './fonts/Manrope-Bold.ttf';
+import ManropeSemiBold from './fonts/Manrope-SemiBold.ttf';
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -31,7 +32,12 @@ html {
     font-style: normal;
   }
 
-
+  @font-face {
+    font-family: 'Manrope';
+    src: url(${ManropeSemiBold});
+    font-weight: bold;
+    font-style: normal;
+  }
 
   @font-face {
     font-family: 'Manrope';

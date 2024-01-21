@@ -12,20 +12,9 @@ export const theme = {
     textHeder: '#233142',
     textLabel: '#8A8A89',
     textDropDown: 'rgba(18, 20, 23, 0.2)',
+    textHomePage: '#ebcbae',
   },
   fonts: {
     body: 'Manrope, sans-serif',
-  },
-
-  fontSizes: {
-    title: '18px',
-    titleCard: '16px',
-    text: '14px',
-    info: '12px',
-  },
-
-  fontWeights: {
-    medium: 500,
-    regular: 400,
   },
 };

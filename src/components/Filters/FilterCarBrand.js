@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import makes from './makes.json';
 import { changeCarBrand } from '../../redux/filterSlice';
-import { ContainerSelect, Label, Option } from './Filters.styled';
+import { ContainerSelect, Label, Option } from './FiltersCarBrand.styled';
 
 export const FilterCarBrand = () => {
   const dispatch = useDispatch();
