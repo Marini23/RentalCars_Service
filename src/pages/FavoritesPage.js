@@ -1,1 +1,5 @@
-export const FavoritesPage = () => {};
+import { FavoriteAdvertsList } from "components/FavoriteAdvertsList/FavoriteAdvertsList";
+
+export const FavoritesPage = () => {
+    return <FavoriteAdvertsList/>
+};

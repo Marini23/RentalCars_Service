@@ -1,11 +1,9 @@
-const { createSlice } = require('@reduxjs/toolkit');
+import { createSlice } from '@reduxjs/toolkit';
 
 const FavoritesSlice = createSlice({
   name: `favorites`,
   initialState: {
     favoritesItems: [],
-    isLoading: false,
-    error: null,
   },
 
   reducers: {

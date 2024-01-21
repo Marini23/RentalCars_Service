@@ -1,5 +1,6 @@
 // import { useDispatch } from 'react-redux';
 
+import { FaRegHeart } from 'react-icons/fa6';
 import { FaHeart } from 'react-icons/fa6';
 
 import {
@@ -16,14 +17,16 @@ import {
   TitleContainer,
 } from './AdvertsListItem.styled';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectAdverts } from '../../redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAdverts, selectFavorites } from '../../redux/selectors';
 import { Modal } from 'components/Modal/Modal';
 import { AdvertInfoDetails } from 'components/AdvertInfoDetails/AdvertInfoDetails';
+import { addFavorites, deleteFavorites } from '../../redux/favoritesSlice';
 
 export const AdvertsListItem = ({ advert }) => {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const adverts = useSelector(selectAdverts);
+  const favoritesAdverts = useSelector(selectFavorites);
   const {
     year,
     make,
@@ -39,6 +42,7 @@ export const AdvertsListItem = ({ advert }) => {
 
   const [selectedAdvert, setSelectedAdvert] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
   const toggleModal = () => {
     setIsModalOpen(state => !state);
     if (!isModalOpen) {
@@ -48,20 +52,52 @@ export const AdvertsListItem = ({ advert }) => {
       setSelectedAdvert(null);
     }
   };
+
+  const toggleFavorite = () => {
+    setIsFavorite(state => !state);
+    const selectCar = adverts.find(car => car.id === id);
+    if (!isFavorite) {
+      const isExist = favoritesAdverts.find(
+        favorite => favorite.id === selectCar.id
+      );
+      if (isExist) {
+        return;
+      }
+      dispatch(addFavorites(selectCar));
+    } else {
+      dispatch(deleteFavorites(selectCar));
+    }
+  };
+
   return (
     <>
       <AdvertCard>
         <Img src={img} alt={make} />
-        <FaHeart
-          style={{
-            position: 'absolute',
-            top: '14px',
-            left: '242px',
-          }}
-          size="18px"
-          color="white"
-          // onClick={handleClick}
-        />
+        {isFavorite ? (
+          <FaHeart
+            style={{
+              corsor: 'pointer',
+              position: 'absolute',
+              top: '14px',
+              left: '242px',
+              color: `#3470FF`,
+            }}
+            size="18px"
+            onClick={toggleFavorite}
+          />
+        ) : (
+          <FaRegHeart
+            style={{
+              corsor: 'pointer',
+              position: 'absolute',
+              top: '14px',
+              left: '242px',
+              color: 'white',
+            }}
+            size="18px"
+            onClick={toggleFavorite}
+          />
+        )}
         <Container>
           <TitleContainer>
             <Title>
