@@ -8,7 +8,7 @@ export const theme = {
     grey: '#F7F7FB',
     white: '#FFFFFF',
     backgroundModal: '#F9F9F9',
-    backgroundHeder: '#a2a8d3',
+    backgroundHeder: '#fdc57b',
     textHeder: '#233142',
     textLabel: '#8A8A89',
     textDropDown: 'rgba(18, 20, 23, 0.2)',

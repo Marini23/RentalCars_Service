@@ -16,7 +16,7 @@ import {
 } from './AdvertsListItem.styled';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAdverts, selectFavorites } from '../../redux/selectors';
+import { selectAdverts } from '../../redux/selectors';
 import { Modal } from 'components/Modal/Modal';
 import { AdvertInfoDetails } from 'components/AdvertInfoDetails/AdvertInfoDetails';
 import { addFavorites, deleteFavorites } from '../../redux/favoritesSlice';

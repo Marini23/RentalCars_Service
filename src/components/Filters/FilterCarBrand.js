@@ -8,23 +8,22 @@ export const FilterCarBrand = () => {
 
   return (
     <ContainerSelect>
-      <Label>
-        Car brand
-        <select
-          name="makes"
-          defaultValue=""
-          onChange={e => dispatch(changeCarBrand(e.target.value))}
-        >
-          <Option value="" disabled hidden>
-            Enter the text
+      <Label htmlFor="makes">Car brand</Label>
+      <select
+        name="makes"
+        defaultValue=""
+        onChange={e => dispatch(changeCarBrand(e.target.value))}
+        aria-label="Car Brand"
+      >
+        <Option value="" disabled hidden>
+          Enter the text
+        </Option>
+        {makes.map((make, index) => (
+          <Option value={make} key={index}>
+            {make}
           </Option>
-          {makes.map((make, index) => (
-            <Option value={make} key={index}>
-              {make}
-            </Option>
-          ))}
-        </select>
-      </Label>
+        ))}
+      </select>
     </ContainerSelect>
   );
 };
