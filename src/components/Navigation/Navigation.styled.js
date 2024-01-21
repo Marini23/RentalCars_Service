@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Header = styled.nav`
@@ -19,4 +20,21 @@ export const Header = styled.nav`
 export const Text = styled.h3`
   padding: 0 30px;
   color: ${props => `${props.theme.colors.textHeder}`};
+`;
+
+export const activeLinkStyles = {
+  borderBottom: `1px solid ${props => `${props.theme.colors.activeBlue}`}`,
+  color: `${props => `${props.theme.colors.activeBlue}`}`,
+};
+
+export const NavLinkStyled = styled(NavLink)`
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  padding: 0 30px;
+  color: ${props => `${props.theme.colors.textHeder}`};
+  &.active {
+    color: ${props => `${props.theme.colors.activeBlue}`};
+  }
 `;

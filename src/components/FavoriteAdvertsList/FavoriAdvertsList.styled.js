@@ -17,3 +17,9 @@ export const CarsList = styled.ul`
   width: 1184px;
   gap: 40px 29px;
 `;
+
+export const EmptyFavoritesMessage = styled.p`
+  display: flex;
+  font-size: 48px;
+  justify-content: center;
+`;

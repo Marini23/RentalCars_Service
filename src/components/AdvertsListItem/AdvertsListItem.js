@@ -50,15 +50,12 @@ export const AdvertsListItem = ({ advert }) => {
     }
   };
 
-  // const isFavorite = favorites.some(favorite => favorite.id === id);
-
   const isFavorite = useSelector(state =>
     state.favorites.favoritesItems.some(favorite => favorite.id === id)
   );
 
   const toggleFavorite = () => {
     if (isFavorite) {
-      console.log(advert);
       dispatch(deleteFavorites(advert));
     } else {
       dispatch(addFavorites(advert));

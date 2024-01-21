@@ -1,7 +1,11 @@
 import { AdvertsListItem } from 'components/AdvertsListItem/AdvertsListItem';
 import { useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/selectors';
-import { CarsList, FavoritesContainer } from './FavoriAdvertsList.styled';
+import {
+  CarsList,
+  EmptyFavoritesMessage,
+  FavoritesContainer,
+} from './FavoriAdvertsList.styled';
 import { FilterCarBrand } from 'components/Filters/FilterCarBrand';
 
 export const FavoriteAdvertsList = () => {
@@ -9,11 +13,17 @@ export const FavoriteAdvertsList = () => {
   return (
     <FavoritesContainer>
       <FilterCarBrand />
-      <CarsList>
-        {favoritesAdverts.map(advert => (
-          <AdvertsListItem advert={advert} key={advert.id} />
-        ))}
-      </CarsList>
+      {favoritesAdverts.length === 0 ? (
+        <EmptyFavoritesMessage>
+          Your favorites list is empty.
+        </EmptyFavoritesMessage>
+      ) : (
+        <CarsList>
+          {favoritesAdverts.map(advert => (
+            <AdvertsListItem advert={advert} key={advert.id} />
+          ))}
+        </CarsList>
+      )}
     </FavoritesContainer>
   );
 };
