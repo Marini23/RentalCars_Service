@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAdverts } from '../../redux/advertsSlice/advertsOperations';
 import { LoadMoreButton } from 'components/LoadMoreButton/LoadMoreButton';
 import { FilterCarBrand } from 'components/Filters/FilterCarBrand';
-import { CatalogContainer } from './CatalogPage.styled';
+import { CatalogContainer, FilterContainer } from './CatalogPage.styled';
 import { selectError, selectIsLoading } from '../../redux/selectors';
 import { Loader } from 'components/Loader/Loader';
+import { FilterPriceHour } from 'components/Filters/FilterPriceHour';
 
 export const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,10 @@ export const CatalogPage = () => {
 
   return (
     <CatalogContainer>
-      <FilterCarBrand />
+      <FilterContainer>
+        <FilterCarBrand />
+        <FilterPriceHour />
+      </FilterContainer>
       {isLoading && !error && <Loader />}
       {error && <p>Something went wrong!</p>}
       {!isLoading && !error && <AdvertsList />}
