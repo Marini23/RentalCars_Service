@@ -46,7 +46,7 @@ html {
     font-style: normal;
   }
 body {
-  width: 1440px;
+width: 100%;
 margin: 0 auto;
 font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 
     sans-serif;

@@ -1,22 +1,28 @@
 import Select from 'react-select';
 import { Label } from './FiltersCarBrand.styled';
-
-const priceOptions = [
-  {
-    value: 10,
-    label: 10,
-  },
-  {
-    value: 20,
-    label: 20,
-  },
-  {
-    value: 30,
-    label: 30,
-  },
-];
+import { changePriceHour, resetPriceHour } from '../../redux/filterSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectVisibleAdverts } from '../../redux/selectors';
 
 export const FilterPriceHour = () => {
+  const dispatch = useDispatch();
+  const adverts = useSelector(selectVisibleAdverts);
+  const rentalPrices = adverts.map(obj =>
+    Number(obj.rentalPrice.replace('$', ''))
+  );
+
+  const minPrice = Math.min(...rentalPrices);
+  const maxPrice = Math.max(...rentalPrices);
+  const step = 10;
+
+  const priceOptions = Array.from(
+    { length: Math.floor((maxPrice - minPrice) / step) + 1 },
+    (_, index) => ({
+      value: minPrice + index * step,
+      label: minPrice + index * step,
+    })
+  );
+
   return (
     <div>
       <Label htmlFor="price">Price/ 1 hour</Label>
@@ -27,6 +33,13 @@ export const FilterPriceHour = () => {
         isSearchable
         name="price"
         options={priceOptions}
+        onChange={selectedOption => {
+          if (selectedOption) {
+            dispatch(changePriceHour(selectedOption.value));
+          } else {
+            dispatch(resetPriceHour());
+          }
+        }}
         styles={{
           control: (baseStyles, state) => ({
             ...baseStyles,
@@ -43,6 +56,29 @@ export const FilterPriceHour = () => {
               ? 'transparent'
               : baseStyles.borderColor,
             boxShadow: state.isFocused ? 'none' : baseStyles.boxShadow,
+          }),
+          menu: baseStyles => ({
+            ...baseStyles,
+            width: 125,
+            height: 188,
+            borderRadius: 14,
+            color: 'rgba(18, 20, 23, 0.2)',
+            fontSize: 16,
+            fontWeight: 500,
+            lineHeight: 1.25,
+            backgroundColor: '#FFFFFF',
+          }),
+          option: (baseStyles, state) => ({
+            ...baseStyles,
+            fontWeight: 500,
+            color: state.isSelected
+              ? 'rgba(18, 20, 23, 0.2)'
+              : 'rgba(18, 20, 23, 0.2)',
+            backgroundColor: state.isFocused ? '#FFFFFF' : '#FFFFFF',
+            ':hover': {
+              backgroundColor: '#FFFFFF',
+              color: '#121417',
+            },
           }),
         }}
       />

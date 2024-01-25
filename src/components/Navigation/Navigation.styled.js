@@ -5,7 +5,7 @@ export const Header = styled.nav`
   position: fixed;
   z-index: 1;
   display: flex;
-  width: 1440px;
+  width: 100%;
   height: 40px;
   margin: 0 auto;
   gap: 20px;

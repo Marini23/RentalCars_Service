@@ -8,6 +8,8 @@ export const selectError = state => state.adverts.error;
 
 export const selectFilterCarBrand = state => state.filter.carBrand;
 
+export const selectFilterPriceHour = state => state.filter.priceHour;
+
 export const selectFavorites = state => state.favorites.favoritesItems;
 
 export const selectVisibleAdverts = createSelector(
