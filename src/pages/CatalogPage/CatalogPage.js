@@ -8,6 +8,7 @@ import { CatalogContainer, FilterContainer } from './CatalogPage.styled';
 import { selectError, selectIsLoading } from '../../redux/selectors';
 import { Loader } from 'components/Loader/Loader';
 import { FilterPriceHour } from 'components/Filters/FilterPriceHour';
+import { FilterMileage } from 'components/Filters/FilterMileage';
 
 export const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export const CatalogPage = () => {
       <FilterContainer>
         <FilterCarBrand />
         <FilterPriceHour />
+        <FilterMileage />
       </FilterContainer>
       {isLoading && !error && <Loader />}
       {error && <p>Something went wrong!</p>}

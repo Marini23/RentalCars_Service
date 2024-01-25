@@ -5,7 +5,8 @@ const filterSlice = createSlice({
   initialState: {
     carBrand: ``,
     priceHour: ``,
-    carMileage: ``,
+    carMileageMin: ``,
+    carMileageMax: ``,
   },
 
   reducers: {
@@ -19,11 +20,14 @@ const filterSlice = createSlice({
     resetPriceHour(state, action) {
       state.priceHour = '';
     },
-    changeCarMileage(state, action) {
-      state.carMileage = action.payload;
+    changeCarMileageMin(state, action) {
+      state.carMileageMin = action.payload;
     },
-    resetCarMileage(state, action) {
-      state.carMileage = '';
+    resetCarMileageMin(state, action) {
+      state.carMileageMin = '';
+    },
+    changeCarMileageMax(state, action) {
+      state.carMileageMax = action.payload;
     },
   },
 });
@@ -32,7 +36,8 @@ export const {
   changeCarBrand,
   changePriceHour,
   resetPriceHour,
-  changeCarMileage,
-  resetCarMileage,
+  changeCarMileageMin,
+  resetCarMileageMin,
+  changeCarMileageMax,
 } = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;
