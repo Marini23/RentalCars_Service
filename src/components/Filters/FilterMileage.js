@@ -1,12 +1,26 @@
-import { useDispatch } from 'react-redux';
-import { Label } from './FiltersCarBrand.styled';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   changeCarMileageMax,
   changeCarMileageMin,
 } from '../../redux/filterSlice';
+import {
+  ContainerFilterMielage,
+  ContainerInputTo,
+  ContainerInputs,
+  InputFrom,
+  Label,
+  ContainerInputFrom,
+  SpanFrom,
+  SpanTo,
+  InputTo,
+} from './FilterMielage.styled';
+import { selectFilterMielageMin } from '../../redux/selectors';
 
 export const FilterMileage = () => {
   const dispatch = useDispatch();
+
+  const mielageMin = useSelector(selectFilterMielageMin);
 
   const handleChangeMin = e => {
     const inputValue = e.target.value;
@@ -15,7 +29,14 @@ export const FilterMileage = () => {
 
   const handleChangeMax = e => {
     const inputValue = e.target.value;
-    dispatch(changeCarMileageMax(inputValue));
+
+    if (inputValue >= mielageMin) {
+      dispatch(changeCarMileageMax(inputValue));
+    } else {
+      alert(
+        'The maximum value must be greater than or equal to the minimum value.'
+      );
+    }
   };
 
   const handleKeyDownMin = e => {
@@ -43,26 +64,30 @@ export const FilterMileage = () => {
   };
 
   return (
-    <div>
-      <Label htmlFor="mielage">Car mielage / km</Label>
-      <label htmlFor="mielageMin">
-        <span>From</span>
-        <input
-          type="number"
-          name="mielageMin"
-          onChange={handleChangeMin}
-          onKeyDown={handleKeyDownMin}
-        />
-      </label>
-      <label htmlFor="mielageMax">
-        <span>To</span>
-        <input
-          type="number"
-          name="mielageMax"
-          onChange={handleChangeMax}
-          onKeyDown={handleKeyDownMax}
-        />
-      </label>
-    </div>
+    <>
+      <ContainerFilterMielage>
+        <Label htmlFor="mielage">Car mielage / km</Label>
+        <ContainerInputs>
+          <ContainerInputFrom>
+            <SpanFrom>From</SpanFrom>
+            <InputFrom
+              type="number"
+              name="mielageMin"
+              onChange={handleChangeMin}
+              onKeyDown={handleKeyDownMin}
+            />
+          </ContainerInputFrom>
+          <ContainerInputTo htmlFor="mielageMax">
+            <SpanTo>To</SpanTo>
+            <InputTo
+              type="number"
+              name="mielageMax"
+              onChange={handleChangeMax}
+              onKeyDown={handleKeyDownMax}
+            />
+          </ContainerInputTo>
+        </ContainerInputs>
+      </ContainerFilterMielage>
+    </>
   );
 };

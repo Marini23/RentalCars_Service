@@ -10,6 +10,10 @@ export const selectFilterCarBrand = state => state.filter.carBrand;
 
 export const selectFilterPriceHour = state => state.filter.priceHour;
 
+export const selectFilterMielageMin = state => state.filter.carMileageMin;
+
+export const selectFilterMielageMax = state => state.filter.carMileageMax;
+
 export const selectFavorites = state => state.favorites.favoritesItems;
 
 export const selectVisibleAdverts = createSelector(

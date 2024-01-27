@@ -1,8 +1,8 @@
 import Select from 'react-select';
-import { Label } from './FiltersCarBrand.styled';
 import { changePriceHour, resetPriceHour } from '../../redux/filterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectVisibleAdverts } from '../../redux/selectors';
+import { Label } from './FilterPriseHour.styled';
 
 export const FilterPriceHour = () => {
   const dispatch = useDispatch();
