@@ -24,3 +24,39 @@ export const selectVisibleAdverts = createSelector(
     );
   }
 );
+
+// export const selectVisibleAdverts = createSelector(
+//   [
+//     selectAdverts,
+//     selectFilterCarBrand,
+//     selectFilterPriceHour,
+//     selectFilterMielageMin,
+//     selectFilterMielageMax,
+//   ],
+//   (
+//     adverts,
+//     filterCarBrand,
+//     filterPriceHour,
+//     filterMielageMin,
+//     filterMielageMax
+//   ) => {
+//     return adverts.filter(advert => {
+//       const makeMatches =
+//         !filterCarBrand ||
+//         advert.make.toLowerCase().includes(filterCarBrand.toLowerCase());
+//       const hourPriceMatches =
+//         !filterPriceHour || advert.hourPrice <= filterPriceHour;
+//       const mielageMinMatches =
+//         !filterMielageMin || advert.mielage >= filterMielageMin;
+//       const mielageMaxMatches =
+//         !filterMielageMax || advert.mielage <= filterMielageMax;
+
+//       return (
+//         makeMatches &&
+//         hourPriceMatches &&
+//         mielageMinMatches &&
+//         mielageMaxMatches
+//       );
+//     });
+//   }
+// );

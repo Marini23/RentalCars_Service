@@ -1,12 +1,12 @@
 import Select from 'react-select';
 import { changePriceHour, resetPriceHour } from '../../redux/filterSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectVisibleAdverts } from '../../redux/selectors';
+import { selectAdverts } from '../../redux/selectors';
 import { Label } from './FilterPriseHour.styled';
 
 export const FilterPriceHour = () => {
   const dispatch = useDispatch();
-  const adverts = useSelector(selectVisibleAdverts);
+  const adverts = useSelector(selectAdverts);
   const rentalPrices = adverts.map(obj =>
     Number(obj.rentalPrice.replace('$', ''))
   );

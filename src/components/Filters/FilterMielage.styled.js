@@ -28,7 +28,7 @@ export const ContainerInputFrom = styled.div`
   height: 48px;
   background-color: ${props => `${props.theme.colors.grey}`};
   border-radius: 14px 0 0 14px;
-  border-right: 1px solid ${props => `${props.theme.colors.textLabel}`};
+  border-right: 1px solid rgba(204, 204, 204, 1);
 `;
 
 export const ContainerInputTo = styled.div`

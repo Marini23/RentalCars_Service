@@ -16,7 +16,6 @@ import {
 import { IoCloseOutline } from 'react-icons/io5';
 
 export const AdvertInfoDetails = ({ selectedAdvert, isClose }) => {
-  console.log(selectedAdvert);
   const {
     year,
     make,

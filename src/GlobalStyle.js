@@ -69,5 +69,4 @@ ul
             appearance: textfield;
         }
 
-  
 `;

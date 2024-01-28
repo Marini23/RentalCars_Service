@@ -13,6 +13,9 @@ const filterSlice = createSlice({
     changeCarBrand(state, action) {
       state.carBrand = action.payload;
     },
+    resetCarBrand(state, action) {
+      state.carBrand = '';
+    },
     changePriceHour(state, action) {
       state.priceHour = action.payload;
     },
@@ -37,6 +40,7 @@ const filterSlice = createSlice({
 
 export const {
   changeCarBrand,
+  resetCarBrand,
   changePriceHour,
   resetPriceHour,
   changeCarMileageMin,

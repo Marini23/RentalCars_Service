@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import {
   changeCarMileageMax,
@@ -15,12 +15,12 @@ import {
   SpanTo,
   InputTo,
 } from './FilterMielage.styled';
-import { selectFilterMielageMin } from '../../redux/selectors';
+// import { selectFilterMielageMin } from '../../redux/selectors';
 
 export const FilterMileage = () => {
   const dispatch = useDispatch();
 
-  const mielageMin = useSelector(selectFilterMielageMin);
+  // const mielageMin = useSelector(selectFilterMielageMin);
 
   const handleChangeMin = e => {
     const inputValue = e.target.value;
@@ -30,13 +30,7 @@ export const FilterMileage = () => {
   const handleChangeMax = e => {
     const inputValue = e.target.value;
 
-    if (inputValue >= mielageMin) {
-      dispatch(changeCarMileageMax(inputValue));
-    } else {
-      alert(
-        'The maximum value must be greater than or equal to the minimum value.'
-      );
-    }
+    dispatch(changeCarMileageMax(inputValue));
   };
 
   const handleKeyDownMin = e => {
