@@ -1,9 +1,11 @@
 import Select from 'react-select';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ContainerSelect, Label } from './FilterCarBrand.styled';
 import { selectAdverts } from '../../redux/selectors';
+import { resetCarBrand } from '../../redux/filterSlice';
 
 export const FilterCarBrand = ({ input }) => {
+  const dispatch = useDispatch();
   const adverts = useSelector(selectAdverts);
   const rentalMakes = adverts.map(obj => obj.make);
 
@@ -24,7 +26,8 @@ export const FilterCarBrand = ({ input }) => {
         name="carBrand"
         options={makes}
         onChange={selectedOption => {
-          const selectedValue = selectedOption ? selectedOption.value : '';
+          const selectedValue = selectedOption ? selectedOption.value : null;
+          console.log(selectedValue);
           input.onChange(selectedValue);
         }}
         styles={{

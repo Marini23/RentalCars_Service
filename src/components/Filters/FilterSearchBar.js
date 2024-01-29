@@ -18,6 +18,7 @@ export const FilterSearchBar = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = values => {
+    console.log(values);
     dispatch(changeFilter(values));
   };
 

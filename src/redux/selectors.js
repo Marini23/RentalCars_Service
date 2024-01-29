@@ -14,6 +14,8 @@ export const selectFilterMielageMin = state => state.filter.carMileageMin;
 
 export const selectFilterMielageMax = state => state.filter.carMileageMax;
 
+export const selectFilters = state => state.filter;
+
 export const selectFavorites = state => state.favorites.favoritesItems;
 
 export const selectVisibleAdverts = createSelector(
@@ -25,38 +27,23 @@ export const selectVisibleAdverts = createSelector(
   }
 );
 
-// export const selectVisibleAdverts = createSelector(
-//   [
-//     selectAdverts,
-//     selectFilterCarBrand,
-//     selectFilterPriceHour,
-//     selectFilterMielageMin,
-//     selectFilterMielageMax,
-//   ],
-//   (
-//     adverts,
-//     filterCarBrand,
-//     filterPriceHour,
-//     filterMielageMin,
-//     filterMielageMax
-//   ) => {
-//     return adverts.filter(advert => {
-//       const makeMatches =
-//         !filterCarBrand ||
-//         advert.make.toLowerCase().includes(filterCarBrand.toLowerCase());
-//       const hourPriceMatches =
-//         !filterPriceHour || advert.hourPrice <= filterPriceHour;
-//       const mielageMinMatches =
-//         !filterMielageMin || advert.mielage >= filterMielageMin;
-//       const mielageMaxMatches =
-//         !filterMielageMax || advert.mielage <= filterMielageMax;
-
-//       return (
-//         makeMatches &&
-//         hourPriceMatches &&
-//         mielageMinMatches &&
-//         mielageMaxMatches
-//       );
-//     });
-//   }
-// );
+export const selectFilteredAdverts = createSelector(
+  [selectAdverts, selectFilters],
+  (adverts, filter) => {
+    return adverts
+      .filter(advert =>
+        filter.carBrand ? advert.make === filter.carBrand : true
+      )
+      .filter(advert =>
+        filter.priceHour
+          ? advert.rentalPrice.replace('$', '') > filter.priceHour
+          : true
+      )
+      .filter(advert =>
+        filter.carMileageMin ? advert.mielage > filter.carMileageMin : true
+      )
+      .filter(advert =>
+        filter.carMileageMax ? advert.mielage < filter.carMileageMax : true
+      );
+  }
+);
