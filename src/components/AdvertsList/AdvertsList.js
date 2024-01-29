@@ -2,7 +2,7 @@ import { AdvertsListItem } from 'components/AdvertsListItem/AdvertsListItem';
 import { useSelector } from 'react-redux';
 import {
   selectFilteredAdverts,
-  selectVisibleAdverts,
+  // selectVisibleAdverts,
 } from '../../redux/selectors';
 import { CarsList } from './AdvertsList.styled';
 

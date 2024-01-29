@@ -21,12 +21,9 @@ const filterSlice = createSlice({
         carMileageMax: null,
       });
     },
-    resetCarBrand(state, action) {
-      return (state.carBrand = '');
-    },
   },
 });
 
-export const { changeFilter, resetFilter, resetCarBrand } = filterSlice.actions;
+export const { changeFilter, resetFilter } = filterSlice.actions;
 
 export const filterReducer = filterSlice.reducer;
