@@ -1,11 +1,9 @@
 import Select from 'react-select';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeCarBrand, resetCarBrand } from '../../redux/filterSlice';
-import { ContainerSelect, Label } from './FiltersCarBrand.styled';
+import { useSelector } from 'react-redux';
+import { ContainerSelect, Label } from './FilterCarBrand.styled';
 import { selectAdverts } from '../../redux/selectors';
 
-export const FilterCarBrand = () => {
-  const dispatch = useDispatch();
+export const FilterCarBrand = ({ input }) => {
   const adverts = useSelector(selectAdverts);
   const rentalMakes = adverts.map(obj => obj.make);
 
@@ -16,20 +14,18 @@ export const FilterCarBrand = () => {
 
   return (
     <ContainerSelect>
-      <Label htmlFor="makes">Car brand</Label>
+      <Label htmlFor="carBrand">Car brand</Label>
       <Select
+        id="carBrand"
         placeholder={'Enter the text'}
         isClearable
         clearable={false}
         isSearchable
-        name="makes"
+        name="carBrand"
         options={makes}
         onChange={selectedOption => {
-          if (selectedOption) {
-            dispatch(changeCarBrand(selectedOption.value));
-          } else {
-            dispatch(resetCarBrand());
-          }
+          const selectedValue = selectedOption ? selectedOption.value : '';
+          input.onChange(selectedValue);
         }}
         styles={{
           control: (baseStyles, state) => ({

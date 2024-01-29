@@ -6,13 +6,13 @@ import {
   EmptyFavoritesMessage,
   FavoritesContainer,
 } from './FavoriAdvertsList.styled';
-import { FilterCarBrand } from 'components/Filters/FilterCarBrand';
+import { FilterSearchBar } from 'components/Filters/FilterSearchBar';
 
 export const FavoriteAdvertsList = () => {
   const favoritesAdverts = useSelector(selectFavorites);
   return (
     <FavoritesContainer>
-      <FilterCarBrand />
+      <FilterSearchBar />
       {favoritesAdverts.length === 0 ? (
         <EmptyFavoritesMessage>
           Your favorites list is empty.

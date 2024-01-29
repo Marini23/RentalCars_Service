@@ -1,11 +1,9 @@
 import Select from 'react-select';
-import { changePriceHour, resetPriceHour } from '../../redux/filterSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectAdverts } from '../../redux/selectors';
 import { Label } from './FilterPriseHour.styled';
 
-export const FilterPriceHour = () => {
-  const dispatch = useDispatch();
+export const FilterPriceHour = ({ input }) => {
   const adverts = useSelector(selectAdverts);
   const rentalPrices = adverts.map(obj =>
     Number(obj.rentalPrice.replace('$', ''))
@@ -25,20 +23,17 @@ export const FilterPriceHour = () => {
 
   return (
     <div>
-      <Label htmlFor="price">Price/ 1 hour</Label>
+      <Label htmlFor="priceHour">Price/ 1 hour</Label>
       <Select
         placeholder={'To $'}
         isClearable
         clearable={false}
         isSearchable
-        name="price"
+        name="priceHour"
         options={priceOptions}
         onChange={selectedOption => {
-          if (selectedOption) {
-            dispatch(changePriceHour(selectedOption.value));
-          } else {
-            dispatch(resetPriceHour());
-          }
+          const selectedValue = selectedOption ? selectedOption.value : null;
+          input.onChange(selectedValue);
         }}
         styles={{
           control: (baseStyles, state) => ({

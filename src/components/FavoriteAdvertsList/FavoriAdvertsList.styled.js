@@ -4,7 +4,7 @@ export const FavoritesContainer = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  width: 1440px;
+  width: 100%;
   margin: 0 auto;
   top: 60px;
 `;

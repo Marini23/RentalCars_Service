@@ -3,12 +3,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAdverts } from '../../redux/advertsSlice/advertsOperations';
 import { LoadMoreButton } from 'components/LoadMoreButton/LoadMoreButton';
-import { FilterCarBrand } from 'components/Filters/FilterCarBrand';
-import { CatalogContainer, FilterContainer } from './CatalogPage.styled';
+import { CatalogContainer } from './CatalogPage.styled';
 import { selectError, selectIsLoading } from '../../redux/selectors';
 import { Loader } from 'components/Loader/Loader';
-import { FilterPriceHour } from 'components/Filters/FilterPriceHour';
-import { FilterMileage } from 'components/Filters/FilterMileage';
+
+import { FilterSearchBar } from 'components/Filters/FilterSearchBar';
 
 export const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -21,11 +20,7 @@ export const CatalogPage = () => {
 
   return (
     <CatalogContainer>
-      <FilterContainer>
-        <FilterCarBrand />
-        <FilterPriceHour />
-        <FilterMileage />
-      </FilterContainer>
+      <FilterSearchBar />
       {isLoading && !error && <Loader />}
       {error && <p>Something went wrong!</p>}
       {!isLoading && !error && <AdvertsList />}

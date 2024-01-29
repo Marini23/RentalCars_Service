@@ -8,11 +8,3 @@ export const CatalogContainer = styled.div`
   margin: 0 auto;
   top: 60px;
 `;
-
-export const FilterContainer = styled.div`
-  display: flex;
-  width: 859px;
-  height: 74px;
-  gap: 18px;
-  margin: 0 auto;
-`;
