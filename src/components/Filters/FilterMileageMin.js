@@ -6,7 +6,7 @@ import {
 
 export const FilterMileageMin = ({ input }) => {
   const handleChangeMin = e => {
-    const inputValue = e.target.value;
+    const inputValue = e.target.value === '' ? null : e.target.value;
     input.onChange(inputValue);
   };
 

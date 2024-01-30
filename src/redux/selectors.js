@@ -18,15 +18,6 @@ export const selectFilters = state => state.filter;
 
 export const selectFavorites = state => state.favorites.favoritesItems;
 
-export const selectVisibleAdverts = createSelector(
-  [selectAdverts, selectFilterCarBrand],
-  (adverts, filter) => {
-    return adverts.filter(advert =>
-      advert.make.toLowerCase().includes(filter.toLowerCase())
-    );
-  }
-);
-
 export const selectFilteredAdverts = createSelector(
   [selectAdverts, selectFilters],
   (adverts, filter) => {
@@ -39,11 +30,13 @@ export const selectFilteredAdverts = createSelector(
           ? advert.rentalPrice.replace('$', '') > filter.priceHour
           : true
       )
+      .filter(advert => {
+        return filter.carMileageMin
+          ? advert.mileage > filter.carMileageMin
+          : true;
+      })
       .filter(advert =>
-        filter.carMileageMin ? advert.mielage > filter.carMileageMin : true
-      )
-      .filter(advert =>
-        filter.carMileageMax ? advert.mielage < filter.carMileageMax : true
+        filter.carMileageMax ? advert.mileage < filter.carMileageMax : true
       );
   }
 );
